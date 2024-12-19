@@ -15,7 +15,7 @@ def main():
     # probability of illness
     p_min = st.sidebar.slider(r"Minimum probability of illness ($p$)", 0.0, 1.0, 0.0, 0.01)
     p_max = st.sidebar.slider(r"Maximum probability of illness ($p$)", 0.0, 1.0, 1.0, 0.01)
-    p_values = np.linspace(p_min, p_max, 100)
+    p_values = np.linspace(p_min, p_max, 1000)
 
     # treatment threshold
     p_Rx = st.sidebar.slider(r"Treatment threshold ($p^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
@@ -49,7 +49,7 @@ def main():
 
     # ======================= PLOTTING RESULTS =======================
     fig, ax = plt.subplots()
-    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"treatment threshold ($p^{\rm Rx} = %1.2f$)"%p_Rx)
+    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$p^{\rm Rx} = %1.2f$"%p_Rx)
 
     INB_functions = {
     "INB (single)": lambda p: INB_d_b(p, c_Dx_d_b, Se, Sp, p_Rx),
@@ -60,11 +60,19 @@ def main():
     "INB (triple, majority)": lambda p: INB_d_b_i_j_k_M(p, c_Dx_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se, Se_j, Se_k, Sp, Sp_j, Sp_k, p_Rx)
     }
 
+    y_all_values = []
     for INB_type in selected_INBs:
         if INB_type in INB_functions:
             y_values = [INB_functions[INB_type](p) for p in p_values]
-            ax.plot(p_values, y_values, label=f"{INB_type}")
-
+            y_all_values.append(y_values)
+            y_values = np.asarray(y_values)
+            ax.plot(p_values[y_values >= 0], y_values[y_values >= 0], label=f"{INB_type}", zorder=2)
+    
+    y_max_values = np.max(y_all_values, axis=0)
+    ax.plot(p_values[y_max_values >= 0], y_max_values[y_max_values >= 0], \
+            color="k", linewidth=5, label=f"INB hull", alpha=0.4, zorder=1)    
+    
+    ax.set_xlim(0,1)
     ax.minorticks_on()
     ax.tick_params(axis='both', which='major', labelsize=12)
     ax.tick_params(axis='both', which='minor', labelsize=10)
