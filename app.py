@@ -60,8 +60,8 @@ def page1():
     "INB (single)": lambda p: INB_d_b(p, c_Dx_i_d_b, Se_i, Sp_i, p_Rx),
     "INB (dual, conjunctive)": lambda p: INB_d_b_i_j_c(p, c_Dx_i_d_b, c_Dx_j_d_b, Se_i, Se_j, Sp_i, Sp_j, p_Rx),
     "INB (dual, disjunctive)": lambda p: INB_d_b_i_j_d(p, c_Dx_i_d_b, c_Dx_j_d_b, Se_i, Se_j, Sp_i, Sp_j, p_Rx),
-    "INB (triple, conjunctive)": lambda p: INB_d_b_i_j_k_c(p, c_Dx_i_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se_i, Se_j, Se_k, Sp, Sp_j, Sp_k, p_Rx),
-    "INB (triple, disjunctive)": lambda p: INB_d_b_i_j_k_d(p, c_Dx_i_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se_i, Se_j, Se_k, Sp, Sp_j, Sp_k, p_Rx),
+    "INB (triple, conjunctive)": lambda p: INB_d_b_i_j_k_c(p, c_Dx_i_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se_i, Se_j, Se_k, Sp_i, Sp_j, Sp_k, p_Rx),
+    "INB (triple, disjunctive)": lambda p: INB_d_b_i_j_k_d(p, c_Dx_i_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se_i, Se_j, Se_k, Sp_i, Sp_j, Sp_k, p_Rx),
     "INB (triple, majority)": lambda p: INB_d_b_i_j_k_M(p, c_Dx_i_d_b, c_Dx_j_d_b, c_Dx_k_d_b, Se_i, Se_j, Se_k, Sp_i, Sp_j, Sp_k, p_Rx)
     }
 
