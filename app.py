@@ -54,7 +54,7 @@ def page1():
 
     # ======================= PLOTTING RESULTS =======================
     fig, ax = plt.subplots()
-    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$p^{\rm Rx} = %1.2f$"%p_Rx)
+    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\tilde{p}^{\rm Rx} = %1.2f$"%p_Rx)
 
     INB_functions = {
     "INB (single)": lambda p: INB_d_b(p, c_Dx_i_d_b, Se_i, Sp_i, p_Rx),
@@ -148,7 +148,7 @@ def page2():
 
     # ======================= PLOTTING RESULTS =======================
     fig, ax = plt.subplots()
-    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$p^{\rm Rx} = %1.2f$"%p_Rx)
+    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\tilde{p}^{\rm Rx} = %1.2f$"%p_Rx)
 
     INB_functions = {
     "INB (single)": lambda p: INB(p, lam, q_g, c_Rx, c_Dx_i, h_Dx_i, Se_i, Sp_i, p_Rx),
