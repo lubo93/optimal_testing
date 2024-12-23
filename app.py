@@ -23,7 +23,7 @@ def page1():
     p_values = np.linspace(p_min, p_max, 1000)
 
     # treatment threshold
-    p_Rx = st.sidebar.slider(r"Treatment threshold ($p^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
+    p_Rx = st.sidebar.slider(r"Treatment threshold ($\tilde{p}^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
 
     # test parameters 1
     st.sidebar.subheader("Parameters of test 1")
@@ -114,7 +114,7 @@ def page2():
     c_Rx = st.sidebar.slider(r"Treatment cost ($c^{\rm Rx}$)", 0.0, 1.0, 0.05, 0.01)
         
     # treatment threshold
-    p_Rx = st.sidebar.slider(r"Treatment threshold ($p^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
+    p_Rx = st.sidebar.slider(r"Treatment threshold ($\tilde{p}^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
 
     # test parameters 1
     st.sidebar.subheader("Parameters of test 1")
