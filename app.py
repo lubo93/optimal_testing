@@ -22,8 +22,8 @@ def page1():
     p_max = st.sidebar.slider(r"Maximum probability of illness ($p$)", 0.0, 1.0, 1.0, 0.01)
     p_values = np.linspace(p_min, p_max, 1000)
 
-    # treatment threshold
-    p_Rx = st.sidebar.slider(r"Treatment threshold ($\tilde{p}^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
+    # cost-benefit tradeoff of treatment
+    p_Rx = st.sidebar.slider(r"Cost-benefit tradeoff of treatment ($\rho$)", 0.0, 1.0, 0.5, 0.01)
 
     # test parameters 1
     st.sidebar.subheader("Parameters of test 1")
@@ -54,7 +54,7 @@ def page1():
 
     # ======================= PLOTTING RESULTS =======================
     fig, ax = plt.subplots()
-    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\tilde{p}^{\rm Rx} = %1.2f$"%p_Rx)
+    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\rho = %1.2f$"%p_Rx)
 
     INB_functions = {
     "INB (single)": lambda p: INB_d_b(p, c_Dx_i_d_b, Se_i, Sp_i, p_Rx),
@@ -113,8 +113,8 @@ def page2():
     # treament cost
     c_Rx = st.sidebar.slider(r"Treatment cost ($c^{\rm Rx}$)", 0.0, 1.0, 0.05, 0.01)
         
-    # treatment threshold
-    p_Rx = st.sidebar.slider(r"Treatment threshold ($\tilde{p}^{\rm Rx}$)", 0.0, 1.0, 0.5, 0.01)
+    # cost-benefit tradeoff of treatment
+    p_Rx = st.sidebar.slider(r"Cost-benefit tradeoff of treatment ($\rho$)", 0.0, 1.0, 0.5, 0.01)
 
     # test parameters 1
     st.sidebar.subheader("Parameters of test 1")
@@ -148,7 +148,7 @@ def page2():
 
     # ======================= PLOTTING RESULTS =======================
     fig, ax = plt.subplots()
-    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\tilde{p}^{\rm Rx} = %1.2f$"%p_Rx)
+    ax.axvline(p_Rx, color="Grey", linestyle="--", label=r"$\rho = %1.2f$"%p_Rx)
 
     INB_functions = {
     "INB (single)": lambda p: INB(p, lam, q_g, c_Rx, c_Dx_i, h_Dx_i, Se_i, Sp_i, p_Rx),
